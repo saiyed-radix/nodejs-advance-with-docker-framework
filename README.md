@@ -19,6 +19,11 @@
 - Learn node framework KOA Or Hapi
   - https://koajs.com/
   - https://hapi.dev/
+  - REST API using koa.js
+    - https://medium.com/nerd-for-tech/koa-js-restful-apis-36f28eca1138
+
+
+
 - Enhancing Performance (clustering, forking- children)
 
   - **clustering**
@@ -32,6 +37,7 @@
   - https://pm2.io/docs/runtime/guide/installation/
   - https://www.digitalocean.com/community/tutorials/how-to-use-pm2-to-setup-a-node-js-production-environment-on-an-ubuntu-vps
   - https://www.tecmint.com/install-pm2-to-run-nodejs-apps-on-linux-server/
+  - https://medium.com/geekculture/scaling-node-js-applicationswith-pm2-clusters-c216c4468d66
 - Datacaching with Redis
   - https://redis.com/ebook/part-1-getting-started/chapter-2-anatomy-of-a-redis-web-application/2-4-database-row-caching/
   - https://redis.io/topics/client-side-caching
