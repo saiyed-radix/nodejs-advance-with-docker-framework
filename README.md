@@ -12,6 +12,7 @@
 - https://www.docker.com/
 - https://www.docker.com/get-started
 - https://www.bezkoder.com/docker-compose-nodejs-mongodb/
+- https://snyk.io/blog/10-best-practices-to-containerize-nodejs-web-applications-with-docker/
 
 ## Milestone 2:
 
