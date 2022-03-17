@@ -1,5 +1,4 @@
-# nodejs-advance-with-docker-framework
-(Node Js Advance: Docker, Frameworks and Perfomance Enhancing)
+# Node Js Advance: Docker, Frameworks and Perfomance Enhancing
 
 ## Milestone 1:
 
@@ -12,18 +11,12 @@
 - https://www.docker.com/
 - https://www.docker.com/get-started
 - https://www.bezkoder.com/docker-compose-nodejs-mongodb/
-- https://snyk.io/blog/10-best-practices-to-containerize-nodejs-web-applications-with-docker/
 
 ## Milestone 2:
 
 - Learn node framework KOA Or Hapi
   - https://koajs.com/
   - https://hapi.dev/
-  - REST API using koa.js
-    - https://medium.com/nerd-for-tech/koa-js-restful-apis-36f28eca1138
-
-
-
 - Enhancing Performance (clustering, forking- children)
 
   - **clustering**
@@ -37,7 +30,6 @@
   - https://pm2.io/docs/runtime/guide/installation/
   - https://www.digitalocean.com/community/tutorials/how-to-use-pm2-to-setup-a-node-js-production-environment-on-an-ubuntu-vps
   - https://www.tecmint.com/install-pm2-to-run-nodejs-apps-on-linux-server/
-  - https://medium.com/geekculture/scaling-node-js-applicationswith-pm2-clusters-c216c4468d66
 - Datacaching with Redis
   - https://redis.com/ebook/part-1-getting-started/chapter-2-anatomy-of-a-redis-web-application/2-4-database-row-caching/
   - https://redis.io/topics/client-side-caching
@@ -49,10 +41,58 @@
     - https://stackify.com/node-js-logging/
 
 ## Exercise:
+- Create a architecture using docker (The application should be built as a collection of two Docker containers)
+    - ApplicationModel Container 
+        - This component should be the database component.
+        - This should be contains docker-compose.yml and Dockerfile for configuring the PostgreSQL/mongoDb/mySQL database.
+        - When docker is set-up that time default schema will be create based on default schema file.
+        - Default Schema should like
+          - User schema
 
-- Create a project structure using Docker.
-- Create a project structure/boilerplate using either Koa/hapi with use of cluster.
-- Create a APIs, get data from redis and logging error in either sentry or stackify
+            | field | type | constraint | Default |
+            |------|------|------|------|
+            |id| auto increment | PRIMARY KEY |  |
+            |oid| text | UNIQUE NOT NULL  | |
+            |date_created| TIMESTAMPTZ |  | NOW()|
+            |date_edited| TIMESTAMPTZ |  | NOW()|
+            |email| text | UNIQUE NOT NULL | |
+            |first_name| text | NOT NULL | |
+            |middle_name| text | NOT NULL | |
+            |last_name| text | NOT NULL | |
+            |verify_email_token| text | | |
+            |verify_email_token_expiry| timestamp | | |
+            |activation_token| text | | |
+            |activation_token_expiry| timestamp | | |
+            |status| text |  NOT NULL| 'unverified' |
+            |date_status_changed| text | | |
+            |password_reset_token| text | | |
+            |password_reset_expiry| timestamp | | |
+            |password_salt| text | | |
+            |password_hash| text | | |
+            |password_algo| text | | |
+            
+
+    - Controller Container
+        - This component should be the NodeJS application exposing all API endpoints needed by the applicat.
+        - This is a purely back-end application and primarily accepts and returns JSON. HTML is not returned from any API endpoints - front-ends are responsible for displaying or parsing returned data.
+        - This contains the docker-compose.yml and Dockerfile for configuring the NodeJS with specific verison.
+        - Configure pm2 in dockerfile and run the controller application
+        - Create an end-points for user-management with error handling and logs using the 
+          - Sign-up
+            - endpoint: `/sign-up`
+          - Login
+            - endpoint: `/login`
+          - User email verification, after registration
+            - endpoint: `/user-verified-email`
+          - User set password request after email verification
+            - endpoint: `/user-activate`
+          - User forgot password request when user forgot the password
+            - endpoint: `/user-init-password-reset`
+          - User reset password request when receive an email for set new password link
+            - endpoint: `/user-complete-password-reset`
+
+- Create a security, User can only able to register max 5 users per day from same ip address
+  - Use datas caching mechanism for log user registration based on ip.
 
 ## What you will be able to do post this course:
 
